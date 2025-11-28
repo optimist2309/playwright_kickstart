@@ -1,0 +1,22 @@
+{
+  "name": "playwright_kickstart",
+  "version": "1.0.0",
+  "description": "Repo for my playwright learning journey",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/optimist2309/playwright_kickstart.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/optimist2309/playwright_kickstart/issues"
+  },
+  "homepage": "https://github.com/optimist2309/playwright_kickstart#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.10.1"
+  }
+}
