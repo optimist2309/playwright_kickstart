@@ -5,3 +5,4 @@ test('Verify page title', async({page}) =>{
     await expect(page).toHaveTitle(/Playwright/);
 });
 
+ 

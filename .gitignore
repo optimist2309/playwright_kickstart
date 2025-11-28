@@ -137,7 +137,6 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-<<<<<<< HEAD
 
 # Playwright
 /test-results/
@@ -145,5 +144,3 @@ vite.config.ts.timestamp-*
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
-=======
->>>>>>> 393527a82ba97c4c7147638cecc8131ae60bc670
