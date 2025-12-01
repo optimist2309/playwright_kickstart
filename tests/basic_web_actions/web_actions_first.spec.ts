@@ -30,7 +30,7 @@ expect(await radioButton.isChecked()).toBe(true);
 
 
 // In playwright checkbox and radio button actions hadling is same.
-test.only('Checkbox button action ', async({page}) =>{  
+test('Checkbox button action ', async({page}) =>{  
 await page.goto("https://testautomationpractice.blogspot.com/");
 const checkboxButtonloc:Locator = page.getByLabel('Sunday');
 
@@ -72,4 +72,17 @@ await page.waitForTimeout(5000);
 test('Verify page title', async({page}) =>{
     await page.goto("https://playwright.dev/");
     await expect(page).toHaveTitle(/Playwright/);
+});
+
+test.only('Dropdown Actions', async({page}) =>{
+    await page.goto("https://testautomationpractice.blogspot.com/");
+    const dropdown:Locator = page.locator('#country');
+    
+    // Select an option from dropdown by value.
+    await dropdown.selectOption('India');
+    
+    // Check an option present in dropdown.
+     const dropdownValues:Locator = page.locator('#country>option');
+     const optionsCount = (await dropdownValues.allTextContents()).map(text=>text.trim());
+     expect(optionsCount).toContain('India');
 });
