@@ -31,7 +31,7 @@ test('Simple Alert Handling', async({page}) =>{
     await page.locator("#alertBtn").click(); // Clicking this button will trigger an alert dialog.
     });
 
-test.only('Confirm Alert Handling', async({page}) =>{
+test('Confirm Alert Handling', async({page}) =>{
     await page.goto("https://testautomationpractice.blogspot.com/");
     page.on('dialog', dialog => {
         
@@ -46,7 +46,7 @@ test.only('Confirm Alert Handling', async({page}) =>{
         await page.locator("#confirmBtn").click(); // Clicking this button will trigger an alert dialog.
     });
 
-test.only('Confirm Alert Handling-2', async({page}) =>{
+test('Confirm Alert Handling-2', async({page}) =>{
     await page.goto("https://testautomationpractice.blogspot.com/");
     page.on('dialog', dialog => {
         
@@ -60,4 +60,38 @@ test.only('Confirm Alert Handling-2', async({page}) =>{
          });
 
     await page.locator("#confirmBtn").click(); // Clicking this button will trigger an alert dialog.
+    });
+
+    test('Prompt Alert Handling', async({page}) =>{
+    await page.goto("https://testautomationpractice.blogspot.com/");
+    page.on('dialog', dialog => {
+        
+        console.log(dialog.type()); // Retrieving the type of dialog.
+        expect( dialog.type()).toBe("prompt"); // Verifying the type of dialog
+        
+        console.log(dialog.message());  // Message text in the dialog
+        expect( dialog.message()).toBe("Please enter your name:"); // Verifying the message text
+        
+        console.log(dialog.defaultValue()); // Retrieving the default value in the prompt dialog.
+        dialog.accept("TestUser") // To accept the dialog with input value "TestUser"
+});
+
+        await page.locator("#promptBtn").click(); // Clicking this button will trigger an alert dialog.
+    });
+
+    test.only('Prompt Alert Handling -2 ', async({page}) =>{
+    await page.goto("https://testautomationpractice.blogspot.com/");
+    page.on('dialog', dialog => {
+        
+        console.log(dialog.type()); // Retrieving the type of dialog.
+        expect( dialog.type()).toBe("prompt"); // Verifying the type of dialog
+        
+        console.log(dialog.message());  // Message text in the dialog
+        expect( dialog.message()).toBe("Please enter your name:"); // Verifying the message text
+        
+        console.log(dialog.defaultValue()); // Retrieving the default value in the prompt dialog.
+        dialog.dismiss(); // To dismiss the prompt dialog.
+    });
+
+        await page.locator("#promptBtn").click(); // Clicking this button will trigger an alert dialog.
     });
