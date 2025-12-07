@@ -15,7 +15,7 @@ If there is no listener for page.on('dialog'), all dialogs are automatically dis
 
 import {test, expect,Locator} from '@playwright/test';
 
-test.only('Simple Alert Handling', async({page}) =>{
+test('Simple Alert Handling', async({page}) =>{
     await page.goto("https://testautomationpractice.blogspot.com/");
     page.on('dialog', dialog => {
         
@@ -29,4 +29,35 @@ test.only('Simple Alert Handling', async({page}) =>{
          });
 
     await page.locator("#alertBtn").click(); // Clicking this button will trigger an alert dialog.
+    });
+
+test.only('Confirm Alert Handling', async({page}) =>{
+    await page.goto("https://testautomationpractice.blogspot.com/");
+    page.on('dialog', dialog => {
+        
+        console.log(dialog.type()); // Retrieving the type of dialog.
+        expect( dialog.type()).toBe("confirm"); // Verifying the type of dialog
+        
+        console.log(dialog.message());  // Message text in the dialog
+        expect( dialog.message()).toBe("Press a button!"); // Verifying the message text
+        
+        dialog.accept() // To accept the dialog
+         });
+        await page.locator("#confirmBtn").click(); // Clicking this button will trigger an alert dialog.
+    });
+
+test.only('Confirm Alert Handling-2', async({page}) =>{
+    await page.goto("https://testautomationpractice.blogspot.com/");
+    page.on('dialog', dialog => {
+        
+        console.log(dialog.type()); // Retrieving the type of dialog.
+        expect( dialog.type()).toBe("confirm"); // Verifying the type of dialog
+        
+        console.log(dialog.message());  // Message text in the dialog
+        expect( dialog.message()).toBe("Press a button!"); // Verifying the message text
+        
+        dialog.dismiss() // To dissming the dialog
+         });
+
+    await page.locator("#confirmBtn").click(); // Clicking this button will trigger an alert dialog.
     });
