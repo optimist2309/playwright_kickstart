@@ -1,6 +1,6 @@
 import {test,  expect,Page, chromium , firefox} from '@playwright/test';
 
-test('Browser context stuff', async ({  }) => {
+test('Browser context stuff in action', async ({  }) => {
     
     const browser  = await chromium.launch(); // Launching the browser
     const context = await browser.newContext(); // Creating a new browser context
@@ -12,7 +12,5 @@ test('Browser context stuff', async ({  }) => {
 
     await  page1.goto("https://playwright.dev/");
     await  page2.goto("https://testautomationpractice.blogspot.com/") ;
-
-
 
 });
