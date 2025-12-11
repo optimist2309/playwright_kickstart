@@ -37,7 +37,7 @@ test('Keyboard actions in action', async ({ page }) => {
 
 });
 
-test.only('Above action with lesser code', async ({ page }) => {
+test('Above action with lesser code', async ({ page }) => {
     
     await page.goto("https://testautomationpractice.blogspot.com/") ;  
 
@@ -58,7 +58,14 @@ test.only('Above action with lesser code', async ({ page }) => {
    await page.keyboard.press('Tab');
    await page.keyboard.press('Tab');
    await page.keyboard.press('Control+V');
-
-   await page.waitForTimeout(5000);
 });
 
+test.only('Keyboard actions using type method slowly like a user', async ({ page }) => {
+    await page.goto("https://testautomationpractice.blogspot.com/") ;
+
+    // Focus on the text area
+    await page.locator("#input1").focus();
+
+    // Type text with keyboard actions slowly
+    await page.keyboard.type("Hello hi bye bye", { delay: 200 });
+});
