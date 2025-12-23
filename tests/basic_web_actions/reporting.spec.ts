@@ -111,4 +111,19 @@ import { defineConfig } from '@playwright/test';
 export default defineConfig({
   reporter: [['junit', { outputFile: 'results.xml' }]],
 });
+
+GitHub Actions annotations
+You can use the built in github reporter to get automatic failure annotations when running in GitHub actions.
+
+Note that all other reporters work on GitHub Actions as well, but do not provide annotations. Also, it is not recommended to use this annotation type if running your tests with a matrix strategy as the stack trace failures will multiply and obscure the GitHub file view.
+
+playwright.config.ts
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  // 'github' for GitHub Actions CI to generate annotations, plus a concise 'dot'
+  // default 'list' when running locally
+  reporter: process.env.CI ? 'github' : 'list',
+});
+
 */
