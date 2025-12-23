@@ -72,4 +72,43 @@ npx playwright test --reporter=blob
 By default, the report is written into the blob-report directory in the package.json directory or current working directory (if no package.json is found).
 
 The report file name looks like report-<hash>.zip or report-<hash>-<shard_number>.zip when sharding is used. The hash is an optional value computed from --grep, --grepInverted, --project, testConfig.tag and file filters passed as command line arguments. The hash guarantees that running Playwright with different command line options will produce different but stable between runs report names. The output file name can be overridden in the configuration file or passed as 'PLAYWRIGHT_BLOB_OUTPUT_FILE' environment variable.
+
+SON reporter
+JSON reporter produces an object with all information about the test run.
+
+Most likely you want to write the JSON to a file. When running with --reporter=json, use PLAYWRIGHT_JSON_OUTPUT_NAME environment variable:
+
+Bash
+PowerShell
+Batch
+PLAYWRIGHT_JSON_OUTPUT_NAME=results.json npx playwright test --reporter=json
+
+In configuration file, pass options directly:
+
+playwright.config.ts
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  reporter: [['json', { outputFile: 'results.json' }]],
+});
+
+
+JUnit reporter
+JUnit reporter produces a JUnit-style xml report.
+
+Most likely you want to write the report to an xml file. When running with --reporter=junit, use PLAYWRIGHT_JUNIT_OUTPUT_NAME environment variable:
+
+Bash
+PowerShell
+Batch
+PLAYWRIGHT_JUNIT_OUTPUT_NAME=results.xml npx playwright test --reporter=junit
+
+In configuration file, pass options directly:
+
+playwright.config.ts
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  reporter: [['junit', { outputFile: 'results.xml' }]],
+});
 */
